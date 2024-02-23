@@ -10,7 +10,7 @@ args = parser.parse_args()
 
 df_raw = pd.read_csv(f'{args.results_dir}/raw_ncu.csv')
 
-startp = 0
+startp = 1
 df_raw = df_raw.iloc[startp:]
 
 l = list(df_raw.iloc[0])
@@ -21,11 +21,11 @@ df_basic = pd.read_csv(f'{args.results_dir}/output_ncu_sms.csv', index_col=0)
 dram_throughput = df_basic['DRAM_Throughput(%)']
 comp_throughput = df_basic['Compute(SM)(%)']
 
-fadd = 'smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed [inst/cycle]'
-fmul = 'smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed [inst/cycle]'
-ffma = 'smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed [inst/cycle]'
-cycles_sec = 'smsp__cycles_elapsed.avg.per_second [cycle/nsecond]'
-bytes_sec = 'dram__bytes.sum.per_second [Gbyte/second]'
+fadd = 'smsp__sass_thread_inst_executed_op_fadd_pred_on.sum.per_cycle_elapsed'
+fmul = 'smsp__sass_thread_inst_executed_op_fmul_pred_on.sum.per_cycle_elapsed'
+ffma = 'smsp__sass_thread_inst_executed_op_ffma_pred_on.sum.per_cycle_elapsed'
+cycles_sec = 'smsp__cycles_elapsed.avg.per_second'
+bytes_sec = 'dram__bytes.sum.per_second'
 
 ai_list = []
 roofline_prof = [] # 1: comp, 0: mem, -1: invalid
@@ -38,8 +38,8 @@ for index, row in df_raw.iterrows():
     add = str(row[fadd])
     mul = str(row[fmul])
     fma = row[ffma]
-    cycles = row[cycles_sec]
-    bytes = row[bytes_sec]
+    cycles = float(row[cycles_sec])
+    bytes = float(row[bytes_sec])
     #print(add, mul, fma, cycles, bytes)
 
     if not isinstance(fma, float):

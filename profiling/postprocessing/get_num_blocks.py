@@ -5,22 +5,25 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--results_dir', type=str, required=True,
                         help='path to directory containing the profiling files')
-parser.add_argument('--max_threads_sm', type=int, default=2048,
-                        help='maximum number of threads that can be active in an SM')
-parser.add_argument('--max_blocks_sm', type=int, default=80,
-                        help='maximum number of blocks that can be active in an SM')
-parser.add_argument('--max_shmem_sm', type=int, default=65536,
-                        help='maximum amount of shared memory (in bytes) per SM')
-parser.add_argument('--max_regs_sm', type=int, default=65536,
-                        help='maximum number of registers per SM')
+parser.add_argument('--device_type', type=str, required=True,
+                        help='Device type in one of (v100, a100, h100)')
 args = parser.parse_args()
 
 df = pd.read_csv(f'{args.results_dir}/output_ncu_processed.csv', index_col=0)
 
-max_threads_sm = args.max_threads_sm
-max_blocks_sm = args.max_blocks_sm
-max_shmem_sm = args.max_shmem_sm
-max_regs_sm = args.max_regs_sm
+device_types = {
+    "v100": {
+        "max_threads_sm": 2048, # Max number of threads that can be active in an SM
+        "max_blocks_sm": 80,    # Max number of blocks that can be active in an SM
+        "max_shmem_sm": 65536,  # Max amount of shared memory (in bytes) per SM
+        "max_regs_sm": 65536    # Max number of registers per SM
+    },
+}
+
+max_threads_sm = device_types[args.device_type]["max_threads_sm"]
+max_blocks_sm = device_types[args.device_type]["max_blocks_sm"]
+max_shmem_sm = device_types[args.device_type]["max_shmem_sm"]
+max_regs_sm = device_types[args.device_type]["max_regs_sm"]
 
 sm_needed = []
 
