@@ -1,0 +1,16 @@
+[
+    {
+        "arch": "vgg11",
+        "kernel_file": "/hosthome/llama2-expr/orion-results/v100/vgg11/batchsize-16/orion_input.csv",
+        "num_kernels": 56,
+        "num_iters": 100,
+        "args": {
+            "model_name": "vgg11",
+            "batchsize": 16,
+            "rps": 30,
+            "uniform": true,
+            "dummy_data": true,
+            "train": false
+        }
+    }
+]
