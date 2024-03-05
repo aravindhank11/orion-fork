@@ -1,0 +1,39 @@
+Name,Profile,Memory_footprint,SM_usage,Duration
+Conv,1,0,392,107392
+void at::native::elementwise_kernel,0,0,3136,128128
+void at::native::vectorized_elementwise_kernel,0,0,1568,123776
+void at::native::(anonymous namespace)::max_pool_forward_nchw,0,0,1568,112224
+Conv,1,0,784,344800
+void at::native::elementwise_kernel,0,0,1568,65568
+void at::native::vectorized_elementwise_kernel,0,0,784,62784
+void at::native::(anonymous namespace)::max_pool_forward_nchw,0,0,784,56896
+Conv,1,0,448,378464
+void at::native::elementwise_kernel,0,0,784,34720
+void at::native::vectorized_elementwise_kernel,0,0,392,31296
+Conv,1,0,448,714048
+void at::native::elementwise_kernel,0,0,784,34464
+void at::native::vectorized_elementwise_kernel,0,0,392,31584
+void at::native::(anonymous namespace)::max_pool_forward_nchw,0,0,392,29920
+Conv,1,0,256,437440
+void at::native::elementwise_kernel,0,0,392,18688
+void at::native::vectorized_elementwise_kernel,0,0,196,15872
+Conv,1,0,256,843584
+void at::native::elementwise_kernel,0,0,392,18912
+void at::native::vectorized_elementwise_kernel,0,0,196,16032
+void at::native::(anonymous namespace)::max_pool_forward_nchw,0,0,196,17280
+Conv,1,0,256,271008
+void at::native::elementwise_kernel,0,0,98,7264
+void at::native::vectorized_elementwise_kernel,-1,0,49,5280
+Conv,1,0,256,273152
+void at::native::elementwise_kernel,0,0,98,6976
+void at::native::vectorized_elementwise_kernel,-1,0,49,5344
+void at::native::(anonymous namespace)::max_pool_forward_nchw,-1,0,49,6720
+void at::native::(anonymous namespace)::adaptive_average_pool,1,0,410,19648
+void at::native::elementwise_kernel,-1,0,4,4224
+void gemmSN_TN_kernel,0,0,57,514976
+void at::native::vectorized_elementwise_kernel,-1,0,2,3104
+void at::native::elementwise_kernel,-1,0,4,4224
+void gemmSN_TN_kernel,0,0,57,93504
+void at::native::vectorized_elementwise_kernel,-1,0,2,2912
+void at::native::elementwise_kernel,-1,0,1,4000
+volta_sgemm_32x32_sliced1x4_tn,1,0,80,43136
